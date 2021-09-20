@@ -16,12 +16,12 @@ function RenderDish({ dish }) {
         </div>
     );
 }
-function RenderComments({ comments }) {
+function RenderComments({ comments, addComment, dishId }) {
     if (comments == null) {
         return (
             <div>
                 <h4>Comments</h4>
-                <CommentForm />
+                <CommentForm dishId={dishId} addComment={addComment} />
             </div>
         );
     }
@@ -40,7 +40,7 @@ function RenderComments({ comments }) {
                 })}
 
             </ul>
-            <CommentForm />
+            <CommentForm dishId={dishId} addComment={addComment} />
         </div>
     );
 
@@ -62,7 +62,9 @@ class CommentForm extends Component {
         });
     }
     handleCommentSubmit(values) {
-        alert(JSON.stringify(values));
+        this.toggleModal();
+        // alert(JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
     };
     render() {
         return (
@@ -75,7 +77,7 @@ class CommentForm extends Component {
                             <Row className="form-group">
                                 <Col>
                                     <Label htmlFor="rating">Rating</Label>
-                                    <Control.select model=".rating" name="rating"
+                                    <Control.select model=".rating" id="rating" name="rating"
                                         className="form-control">
                                         <option>1</option>
                                         <option>2</option>
@@ -117,8 +119,8 @@ class CommentForm extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Col md={{ size: 10, offset: 2 }}>
-                                    <Button type="submit" color="primary">
+                                <Col>
+                                    <Button outline type="submit" color="primary">
                                         Submit
                                     </Button>
                                 </Col>
@@ -148,7 +150,8 @@ const Dishdetail = (props) => {
             </div>
             <div class="row">
                 <RenderDish dish={props.dish} />
-                <RenderComments comments={props.comments} />
+                <RenderComments comments={props.comments}
+                    addComment={props.addComment} dishId={props.dish.id} />
             </div>
         </div>
 
