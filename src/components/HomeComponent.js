@@ -4,20 +4,20 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform } from 'react-animation-components';
 
-function RenderCard({ item, isLoading, errMess }) {
+function RenderCard({item, isLoading, errMess}) {
     if (isLoading) {
-        return (
+        return(
             <Loading />
         );
     }
     else if (errMess) {
-        return (
+        return(
             <h4>{errMess}</h4>
         );
     }
     else
-        return (
-            <FadeTransform in
+        return(
+            <FadeTransform in 
                 transformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
@@ -34,22 +34,22 @@ function RenderCard({ item, isLoading, errMess }) {
 }
 
 function Home(props) {
-    return (
+    return(
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.dish}
+                    <RenderCard item={props.dish} 
                         isLoading={props.dishesLoading}
                         errMess={props.dishesErrMess} />
                 </div>
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.promotion}
+                    <RenderCard item={props.promotion} 
                         isLoading={props.promosLoading}
                         errMess={props.promosErrMess} />
                 </div>
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.leader}
-                        isLoading={props.leaderLoading}
+                    <RenderCard item={props.leader} 
+                        isLoading={props.leaderLoading} 
                         errMess={props.leaderErrMess} />
                 </div>
             </div>

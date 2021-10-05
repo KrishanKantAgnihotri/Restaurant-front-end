@@ -5,8 +5,8 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { Fade, Stagger } from 'react-animation-components';
 
-function RenderLeader({ leader }) {
-    return (
+function RenderLeader({leader}) {
+    return(
         <Media tag="li">
             <Media left middle>
                 <Media object src={baseUrl + leader.image} alt={leader.name} />
@@ -27,20 +27,20 @@ function LeaderList(props) {
         return (
             <Fade in key={leader._id}>
                 <div className="col-12 mt-2">
-                    <RenderLeader leader={leader} />
+                        <RenderLeader leader={leader} />
                 </div>
             </Fade>
         );
     });
 
     if (props.leaders.isLoading) {
-        return (
-            <Loading />
+        return(
+                <Loading />
         );
     }
     else if (props.leaders.errMess) {
-        return (
-            <div className="col-12">
+        return(
+            <div className="col-12"> 
                 <h4>{props.leaders.errMess}</h4>
             </div>
         );
@@ -58,7 +58,7 @@ function LeaderList(props) {
 
 function About(props) {
 
-    return (
+    return(
         <div className="container">
             <div className="row">
                 <Breadcrumb>
@@ -68,7 +68,7 @@ function About(props) {
                 <div className="col-12">
                     <h3>About Us</h3>
                     <hr />
-                </div>
+                </div>                
             </div>
             <div className="row row-content">
                 <div className="col-12 col-md-6">
@@ -100,8 +100,8 @@ function About(props) {
                                 <p className="mb-0">You better cut the pizza in four pieces because
                                     I'm not hungry enough to eat six.</p>
                                 <footer className="blockquote-footer">Yogi Berra,
-                                    <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
-                                        P. Pepe, Diversion Books, 2014</cite>
+                                <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
+                                    P. Pepe, Diversion Books, 2014</cite>
                                 </footer>
                             </blockquote>
                         </CardBody>
@@ -118,4 +118,4 @@ function About(props) {
     );
 }
 
-export default About;
+export default About;    
